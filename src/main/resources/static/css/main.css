@@ -1,0 +1,41 @@
+.game_div{
+    border:1px solid black;
+    width: 450px;
+    height: 180px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.info_for_game{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+
+    align-items: center;
+}
+.team_container{
+    margin: auto;
+    border: 1px solid blue;
+    width: 80px;
+    height: 100%;
+}
+
+.game_navigation{
+    align-items: center;
+    width: 450px;
+    border-top: 1px solid red;
+    margin-top: 11%;
+    height: 30px;
+    margin-bottom: 0;
+}
+.gametime{
+    font-size: 28px;
+}
+
+.team_name{
+    font-size: 18px;
+}

@@ -3,17 +3,17 @@
 <%@include file="includes/header.jsp"%>
 <html>
 <head>
-    <title>Головна сторінка</title>
+    <title>Головна сторінка - NBAinUA</title>
     <link rel="stylesheet" type="text/css"
           href="<%=application.getContextPath() %>/static/css/main.css" >
 </head>
 <body style="background-color: azure">
-<div style="margin-top: 2%">
+<div style="margin-top: 10%">
     <h1 style="text-align: center">${noGamesMessage}</h1>
 
     <c:forEach var="game" items="${gamesList}">
 
-    <div class="game_div" style="background-color: #FFFFFF; box-shadow: #101010">
+    <div class="game_div" style="background-color: #FFFFFF; box-shadow: #101010;">
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" style="text-decoration: none; color:black ">
             <div class="info_for_game">
                 <div class="team_container">

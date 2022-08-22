@@ -1,9 +1,12 @@
 package ua.pchel.nbainua.utils;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
+import net.minidev.json.parser.ParseException;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import ua.pchel.nbainua.hibernate.models.Player;
 import ua.pchel.nbainua.hibernate.models.Team;
-import ua.pchel.nbainua.hibernate.services.TeamService;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -59,23 +62,61 @@ public class PlayersUtil {
         List<String> list = new ArrayList<>();
         return playerList;
     }
-        public static String getName(String tr){
-        String[] container = tr.split("t6 mr-1\">");
-        return container[1].substring(0, container[1].indexOf("<"));
+    public static List<Long> parseId() {
+        List<Long> idList = new ArrayList<>();
+
+        try {
+            File inputFile = new File("D:\\NBAinUA\\src\\main\\java\\ua\\pchel\\nbainua\\utils\\idtext.txt");
+
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+
+            String currentLine;
+            String str = "";
+            while ((currentLine = reader.readLine()) != null) {
+                 str += currentLine;
+
+            }
+            String[] split = str.split("</tr>");
+            for (String line : split){
+                //System.out.println(line);
+                if (line.length() > 8) {
+                    String id = line.substring(line.indexOf("href=\"/player/") + 14, line.indexOf("\" class=\"flex items-center t6 Anchor_complexL"));
+                    id = id.substring(0, id.indexOf("/"));
+                    idList.add(Long.valueOf(id));
+                }
+            }
+
+          //  System.out.println(str);
+
+            reader.close();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+      //  System.out.println(idList);
+        return idList;
     }
 
-    public static String getLastName(String tr){
-        String[] container = tr.split("class=\"t6\">");
-        return container[1].substring(0, container[1].indexOf("<"));
-    }
+    public static List<Long> getPlayerId() throws FileNotFoundException, ParseException {
+        JSONParser parser = new JSONParser();
 
-//    public static String getTeam(String tr){
-//        <a href="/team/1610612761/raptors/" class="t6">TOR</a>
-//                String[] container = tr.split("t6 mr-1\">");
-//
-//    }
+        JSONArray a = (JSONArray) parser.parse(new FileReader("D:\\NBAinUA\\src\\main\\resources\\static\\players.json"));
+        Integer id = 0;
+        List<Long> listOfIds = new ArrayList<>();
+        for (Object o : a)
+        {
+            JSONObject person = (JSONObject) o;
+            System.out.println("i am gere");
+            id = (Integer) person.get("playerId");
+            System.out.println(id);
+            listOfIds.add(Long.valueOf(id));
+
+        }
+        return listOfIds;
+    }
 
     public static void main(String[] args) {
-        parsePlayersPage();
+        parseId();
     }
 }

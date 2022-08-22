@@ -71,3 +71,24 @@ header nav .button{
 header nav .button:hover{
     filter: brightness(1.05);
 }
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.search_div{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%;
+    background-color: white;
+    width: 750px;
+    height: 200px;
+    text-align: center;
+    border: 1px solid black;
+}
+a{
+    color: black;
+}

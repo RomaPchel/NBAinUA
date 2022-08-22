@@ -1,26 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="includes/header.jsp"%>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <style>
-        table, th, td {
-            border: 1px solid black;
-            text-align: center;
-        }
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-        .search_div{
-            margin-right: auto;
-            margin-left: auto;
-            margin-top: 5%;
-            background-color: white;
-            width: 750px;
-            height: 200px;
-            text-align: center;
-            border: 1px solid black;
-        }
+
     </style>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css"
@@ -29,7 +14,7 @@
 </head>
 <body style="background-color: beige">
 
-    <div >
+    <div style="margin-top: 15%" >
         <div class="search_div">
             <label for='myInput'>Search
                 <input id='myInput' onkeyup='searchTable()' type='text' style="margin-top: 10%">
@@ -48,23 +33,24 @@
             <th>Позиція</th>
             <th>Вага</th>
             <th>Звідки</th>
-
-
         </tr>
     </div>
     <div class="table-tabs" style="margin-right: auto; margin-left: auto">
         <div style="margin: auto">
             <c:forEach items="${playersList}" var="player">
+
                 <tr>
-                    <td style="height:80px;width:80px">${player.getFirstName()}</td>
-                    <td style="height:80px;width:80px">${player.getSecondName()}</td>
+                    <td style="height:80px;width:80px"><a href="${pageContext.request.contextPath}/players/${player.getId()}">${player.getFirstName()}</a></td>
+                    <td style="height:80px;width:80px"><a href="${pageContext.request.contextPath}/players/${player.getId()}">${player.getSecondName()}</a></td>
                     <td style="height:80px;width:80px">${player.getTeam().getName()}</td>
                     <td style="height:80px;width:80px">${player.getHeight()}</td>
                     <td style="height:80px;width:80px">${player.getNumber()}</td>
                     <td style="height:80px;width:80px">${player.getPosition()}</td>
                     <td style="height:80px;width:80px">${player.getWeight()}</td>
                     <td style="height:80px;width:80px">${player.getFromOrAttended()}</td>
+
                 </tr>
+
             </c:forEach>
         </div>
      </div>

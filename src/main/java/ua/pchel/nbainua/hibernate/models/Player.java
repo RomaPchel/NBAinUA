@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "players")
 public class Player {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -37,7 +36,10 @@ public class Player {
 
     }
 
-    public Player(String name, String lastName, String valueOf, String number, String position, String height, String weight, String lastAttended, String country) {
+    public Player(Long id, String name, String lastName, String valueOf, String number, String position, String height, String weight, String lastAttended, String country) {
+    }
+
+    public Player(Long valueOf, String name, String lastName, Team team, String number, String position, String height, String weight, String from) {
     }
 
     public String getFirstName() {

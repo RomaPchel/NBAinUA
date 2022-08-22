@@ -1,11 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="includes/header.jsp"%>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <style>
         table, th, td {
-            border: 1px solid black;
             text-align: center;
+            border-top: 1px solid black
         }
         html, body {
             height: 100%;
@@ -16,57 +18,119 @@
             margin-left: auto;
             margin-top: 5%;
             background-color: white;
-            width: 750px;
-            height: 200px;
+            width: 500px;
+            height: 100px;
             text-align: center;
             border: 1px solid black;
+        }
+        .table_div{
+            background-color: white;
+            width: 1200px;
+            text-align: center;
+            border-top: 1px solid black;
+            margin: 5% auto 25%;
+            margin-bottom: 25% !important;
         }
     </style>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css"
           href="<%=application.getContextPath() %>/static/css/includes.css" >
+
+    <link rel="stylesheet" type="text/css"
+          href="<%=application.getContextPath() %>/static/css/player.css" >
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <!-- Font Awesome CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
     <title>Команди</title>
 </head>
-<body style="background-color: beige">
+<body style="background-color: #f3f3f3">
 
-<div >
-    <div class="search_div">
-        <label for='myInput'>Search
-            <input id='myInput' onkeyup='searchTable()' type='text' style="margin-top: 10%">
+<div style="height: 100%">
+    <div class="card shadow-sm search_div" >
+        <label for='myInput'>Знайти
+            <input id='myInput' onkeyup='searchTable()' type='text' style="margin-top: 5%;">
         </label>
     </div>
-    <table style="margin-right: auto; margin-left: auto; margin-top:5%;border: 1px solid black; background-color: #FFFFFF" id='myTable'>
+    <div class="card shadow-sm table_div">
+    <table>
+        <tr>
+            <td>
+                <p>Western</p>
 
-        <div class="table-header" style="margin-right: 50%;">
+                <table style="margin-right: auto; margin-left: auto; margin-top:5%; background-color: #FFFFFF ;display:inline-table;
+" id='myTable'>
 
-            <tr>
-                <th>Лого</th>
-                <th>Назва</th>
-                <th>Конференція</th>
-                <th>Дівізіон</th>
-                <th>Позиція</th>
-                <th>Рахунок</th>
+            <div class="table-header" style="margin-right: 50%;">
 
-            </tr>
-        </div>
-        <div class="table-tabs" style="margin-right: auto; margin-left: auto">
-            <div style="margin: auto">
-                <c:forEach items="${teamsList}" var="team">
+                <tr>
+                    <th>Лого</th>
+                    <th>Назва</th>
+                    <th>Дівізіон</th>
+                    <th>Позиція</th>
+                    <th>Рахунок</th>
+
+                </tr>
+            </div>
+            <div class="table-tabs" style="margin-right: auto; margin-left: auto">
+                <div style="margin: auto">
+                    <c:forEach items="${westernTeamsList}" var="team">
+                        <tr>
+                            <td style="height:80px;width:80px">
+                                <img  style="width: 75px; height: 50px" src="<%=application.getContextPath() %>/static/team-logos/${team.getLogo()}" alt="logo">
+                            </td>
+                            <td style="height:80px;width:80px">${team.getFullName()}</td>
+                            <td style="height:80px;width:80px">${team.getDivision()}</td>
+                            <td style="height:80px;width:80px">${team.getStandings()}</td>
+                            <td style="height:80px;width:80px">${team.getGamesWon()} - ${team.getGamesLost()}</td>
+
+                        </tr>
+                    </c:forEach>
+                </div>
+            </div>
+        </table>
+        </td>
+        <td>
+            <p>Eastern</p>
+
+            <table style="margin-right: auto; margin-left: auto; margin-top:5%; background-color: #FFFFFF ;display:inline-table;" id='myTable2'>
+
+                <div class="table-header" style="margin-right: 50%;">
+
                     <tr>
-                        <td style="height:80px;width:80px">
-                            <img  style="width: 75px; height: 50px" src="<%=application.getContextPath() %>/static/${team.getLogo()}" alt="logo">
-                        </td>
-                        <td style="height:80px;width:80px">${team.getFullName()}</td>
-                        <td style="height:80px;width:80px">${team.getConference()}</td>
-                        <td style="height:80px;width:80px">${team.getDivision()}</td>
-                        <td style="height:80px;width:80px">${team.getStandings()}</td>
-                        <td style="height:80px;width:80px">${team.getGamesWon()} - ${team.getGamesLost()}</td>
+                        <th>Лого</th>
+                        <th>Назва</th>
+                        <th>Дівізіон</th>
+                        <th>Позиція</th>
+                        <th>Рахунок</th>
 
                     </tr>
-                </c:forEach>
-            </div>
-        </div>
+                </div>
+                <div class="table-tabs" style="margin-right: auto; margin-left: auto">
+                    <div style="margin: auto">
+                        <c:forEach items="${easternTeamsList}" var="team">
+                            <tr>
+                                <td style="height:80px;width:80px">
+                                    <img  style="width: 75px; height: 50px" src="<%=application.getContextPath() %>/static/team-logos/${team.getLogo()}" alt="logo">
+                                </td>
+                                <td style="height:80px;width:80px">${team.getFullName()}</td>
+                                <td style="height:80px;width:80px">${team.getDivision()}</td>
+                                <td style="height:80px;width:80px">${team.getStandings()}</td>
+                                <td style="height:80px;width:80px">${team.getGamesWon()} - ${team.getGamesLost()}</td>
+
+                            </tr>
+                        </c:forEach>
+                    </div>
+                </div>
+            </table>
+        </td>
+        </tr>
     </table>
+
+
+    </div>
 
 </div>
 
@@ -95,3 +159,4 @@
     }
 </script>
 </html>
+<%@include file="includes/footer.jsp"%>

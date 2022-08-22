@@ -18,7 +18,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
     <title>${player.getFirstName()} ${player.getSecondName()}</title>
 </head>
-<body style="background-color: beige">
+<body style="background-color:  #f3f3f3">
 
 <div class="student-profile py-4">
     <div class="container">
@@ -73,7 +73,7 @@
                 <div style="height: 26px"></div>
                 <div class="card shadow-sm">
                     <div class="card-header bg-transparent border-0">
-                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Інша інформація</h3>
+                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Статистика</h3>
                     </div>
                     <div class="card-body pt-0">
                         <p>123</p>

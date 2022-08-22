@@ -24,8 +24,11 @@ public class Team {
     private String abbreviation;
     @OneToMany(mappedBy="team")
     private Set<Player> players;
+    private Long pointsLeader;
+    private Long assistsLeader;
+    private Long reboundsLeader;
 
-    public Team(String name, String fullName, String standings, String logo, String conference, String division, String gamesWon, String gamesLost, String abbreviation, Set<Player> players) {
+    public Team(String name, String fullName, String standings, String logo, String conference, String division, String gamesWon, String gamesLost, String abbreviation, Set<Player> players, Long pointsLeader, Long assistsLeader, Long reboundsLeader) {
         this.name = name;
         this.fullName = fullName;
         this.standings = standings;
@@ -36,6 +39,33 @@ public class Team {
         this.gamesLost = gamesLost;
         this.abbreviation = abbreviation;
         this.players = players;
+        this.pointsLeader = pointsLeader;
+        this.assistsLeader = assistsLeader;
+        this.reboundsLeader = reboundsLeader;
+    }
+
+    public Long getPointsLeader() {
+        return pointsLeader;
+    }
+
+    public void setPointsLeader(Long pointsLeader) {
+        this.pointsLeader = pointsLeader;
+    }
+
+    public Long getAssistsLeader() {
+        return assistsLeader;
+    }
+
+    public void setAssistsLeader(Long assistsLeader) {
+        this.assistsLeader = assistsLeader;
+    }
+
+    public Long getReboundsLeader() {
+        return reboundsLeader;
+    }
+
+    public void setReboundsLeader(Long reboundsLeader) {
+        this.reboundsLeader = reboundsLeader;
     }
 
     public Team(String s) {

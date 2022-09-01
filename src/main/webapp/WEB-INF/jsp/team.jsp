@@ -41,6 +41,12 @@
                         <p class="mb-0"><strong class="pr-1">Рекорд:</strong>${team.getGamesWon()} - ${team.getGamesLost()}</p>
 
                     </div>
+                    <div class="card-body">
+                        <p class="mb-0"><strong class="pr-1">Очки:</strong>${team.getStandings()}</p>
+                        <p class="mb-0"><strong class="pr-1">Передачі:</strong>${team.getAbbreviation()}</p>
+                        <p class="mb-0"><strong class="pr-1">Підбори:</strong>${team.getGamesWon()} - ${team.getGamesLost()}</p>
+
+                    </div>
                 </div>
             </div>
             <div class="col-lg-8">
@@ -70,21 +76,39 @@
                     </div>
                 </div>
                 <div style="height: 26px"></div>
-                
+
                 <div class="card shadow-sm">
                     <div class="card-header bg-transparent border-0">
                         <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Статистика</h3>
                     </div>
                     <div class="card-body pt-0">
-                        <p>
-                            Лідер по очкам: ${leadersMap.get("pointsLeader").getFirstName()} ${leadersMap.get("pointsLeader").getSecondName()}
-                            <img style="width: 100px; height: 75px" src="https://cdn.nba.com/headshots/nba/latest/1040x760/${leadersMap.get("pointsLeader").getId()}.png" alt="student dp"></p>
-                        <p>
-                            Лідер по передачам: ${leadersMap.get("assistsLeader").getFirstName()} ${leadersMap.get("assistsLeader").getSecondName()}
-                            <img style="width: 100px; height: 75px" src="https://cdn.nba.com/headshots/nba/latest/1040x760/${leadersMap.get("assistsLeader").getId()}.png" alt="student dp"></p>
-                        <p>
-                            Лідер по підборам: ${leadersMap.get("reboundsLeader").getFirstName()} ${leadersMap.get("reboundsLeader").getSecondName()}
-                            <img style="width: 100px; height: 75px" src="https://cdn.nba.com/headshots/nba/latest/1040x760/${leadersMap.get("reboundsLeader").getId()}.png" alt="student dp"></p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">Лідер по очкам</th>
+                                <td width="2%">:</td>
+                                <td>                                    <img style="width: 100px; height: 75px" src="https://cdn.nba.com/headshots/nba/latest/1040x760/${leadersMap.get("pointsLeader").getId()}.png" alt="student dp"></p>
+                                    <p>
+                                    ${leadersMap.get("pointsLeader").getFirstName()} ${leadersMap.get("pointsLeader").getSecondName()} ${leadersMap.get("pointsLeader").getPoints()} ppg
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Лідер по передачах</th>
+                                <td width="2%">:</td>
+                                <td>                                     <img style="width: 100px; height: 75px" src="https://cdn.nba.com/headshots/nba/latest/1040x760/${leadersMap.get("assistsLeader").getId()}.png" alt="student dp"></p>
+                                    <p>
+                                    ${leadersMap.get("assistsLeader").getFirstName()} ${leadersMap.get("assistsLeader").getSecondName()} ${leadersMap.get("pointsLeader").getAssists()} apg
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th width="30%">Лідер по підборах</th>
+                                <td width="2%">:</td>
+                                <td>                                    <img style="width: 100px; height: 75px" src="https://cdn.nba.com/headshots/nba/latest/1040x760/${leadersMap.get("reboundsLeader").getId()}.png" alt="student dp"></p>
+                                    <p>
+                                    ${leadersMap.get("reboundsLeader").getFirstName()} ${leadersMap.get("reboundsLeader").getSecondName()} ${leadersMap.get("pointsLeader").getRebounds()} rpg
+                                </td>
+                            </tr>
+                        </table>
 
                     </div>
                 </div>
@@ -109,7 +133,9 @@
                                 <tr style="top: 0; /* Don't forget this, required for the stickiness */">
                                     <th>Фото</th>
                                     <th>Ім'я</th>
-                                    <th>Команда</th>
+                                    <th>Очки</th>
+                                    <th>Передачі</th>
+                                    <th>Підбори</th>
                                     <th>Зріст</th>
                                     <th>Номер</th>
                                     <th>Позиція</th>
@@ -126,7 +152,9 @@
                                                 <img style="width: 100px; height: 75px" src="https://cdn.nba.com/headshots/nba/latest/1040x760/${player.getId()}.png" alt="Image not found" onerror="this.onerror=null;this.src='https://cdn.nba.com/headshots/nba/latest/260x190/logoman.png';" />
                                             </td>
                                             <td style="height:80px;width:80px"><a href="${pageContext.request.contextPath}/players/${player.getId()}">${player.getFirstName()} ${player.getSecondName()}</a></td>
-                                            <td style="height:80px;width:80px">${player.getTeam().getName()}</td>
+                                            <td style="height:80px;width:80px">${player.getPoints()}</td>
+                                            <td style="height:80px;width:80px">${player.getAssists()}</td>
+                                            <td style="height:80px;width:80px">${player.getRebounds()}</td>
                                             <td style="height:80px;width:80px">${player.getHeight()}</td>
                                             <td style="height:80px;width:80px">${player.getNumber()}</td>
                                             <td style="height:80px;width:80px">${player.getPosition()}</td>

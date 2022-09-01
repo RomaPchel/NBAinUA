@@ -20,8 +20,11 @@ public class Player {
     private String height;
     private String weight;
     private String fromOrAttended;
+    private String points;
+    private String assists;
+    private String rebounds;
 
-    public Player(String firstName, String secondName, Team team, String number, String position, String height, String weight, String fromOrAttended) {
+    public Player(String firstName, String secondName, Team team, String number, String position, String height, String weight, String fromOrAttended, String points, String assists, String rebounds) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.team = team;
@@ -30,10 +33,38 @@ public class Player {
         this.height = height;
         this.weight = weight;
         this.fromOrAttended = fromOrAttended;
+        this.points = points;
+        this.assists = assists;
+        this.rebounds = rebounds;
     }
+
 
     public Player() {
 
+    }
+
+    public String getPoints() {
+        return points;
+    }
+
+    public void setPoints(String points) {
+        this.points = points;
+    }
+
+    public String getAssists() {
+        return assists;
+    }
+
+    public void setAssists(String assists) {
+        this.assists = assists;
+    }
+
+    public String getRebounds() {
+        return rebounds;
+    }
+
+    public void setRebounds(String rebounds) {
+        this.rebounds = rebounds;
     }
 
     public Player(Long id, String name, String lastName, String valueOf, String number, String position, String height, String weight, String lastAttended, String country) {

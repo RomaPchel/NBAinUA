@@ -76,7 +76,24 @@
                         <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Статистика</h3>
                     </div>
                     <div class="card-body pt-0">
-                        <p>123</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">Очки</th>
+                                <td width="2%">:</td>
+                                <td>${player.getPoints()}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Передачі	</th>
+                                <td width="2%">:</td>
+                                <td>${player.getAssists()}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Підбори</th>
+                                <td width="2%">:</td>
+                                <td>${player.getRebounds()}</td>
+                            </tr>
+
+                        </table>
                     </div>
                 </div>
             </div>

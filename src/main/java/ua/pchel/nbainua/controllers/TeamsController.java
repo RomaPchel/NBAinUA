@@ -11,6 +11,7 @@ import ua.pchel.nbainua.hibernate.models.Player;
 import ua.pchel.nbainua.hibernate.models.Team;
 import ua.pchel.nbainua.hibernate.repos.PlayerRepository;
 import ua.pchel.nbainua.hibernate.repos.TeamRepository;
+import ua.pchel.nbainua.utils.TeamUtil;
 
 import java.util.*;
 
@@ -40,9 +41,9 @@ public class TeamsController {
             return null;
         }
         Team team = teamOptional.get();
-        leadersMap.put("pointsLeader", playerRepository.findById(team.getPointsLeader()).get());
-        leadersMap.put("assistsLeader", playerRepository.findById(team.getAssistsLeader()).get());
-        leadersMap.put("reboundsLeader", playerRepository.findById(team.getReboundsLeader()).get());
+        leadersMap.put("pointsLeader", playerRepository.findById(TeamUtil.getPointsLeader(sortByTeam(playerRepository.findAll(), team.getName()))).get());
+        leadersMap.put("assistsLeader", playerRepository.findById(TeamUtil.getAssistsLeader(sortByTeam(playerRepository.findAll(), team.getName()))).get());
+        leadersMap.put("reboundsLeader", playerRepository.findById(TeamUtil.getReboundsLeader(sortByTeam(playerRepository.findAll(), team.getName()))).get());
 
 
         model.addAttribute("team", team);

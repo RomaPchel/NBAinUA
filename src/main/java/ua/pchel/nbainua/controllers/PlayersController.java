@@ -1,21 +1,19 @@
 package ua.pchel.nbainua.controllers;
 
-import net.minidev.json.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import ua.pchel.nbainua.hibernate.models.Player;
+import ua.pchel.nbainua.hibernate.repos.ArticlesRepository;
 import ua.pchel.nbainua.hibernate.repos.PlayerRepository;
 import ua.pchel.nbainua.hibernate.repos.TeamRepository;
 import ua.pchel.nbainua.utils.PlayersUtil;
 
-import java.io.FileNotFoundException;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -26,29 +24,57 @@ public class PlayersController {
     private PlayerRepository playerRepository;
     @Autowired
     private TeamRepository teamRepository;
+    @Autowired
+    private ArticlesRepository articlesRepository;
 
-//    public void createPlayers(List<Player> playerList, List<Long> listOfIds){
-//        int j = 0;
-//        for (int i = 0; i < playerList.size(); i++){
-//            if (Objects.equals(playerList.get(i).getFirstName(), "Michael") && Objects.equals(playerList.get(i).getSecondName(), "Foster Jr.") || (Objects.equals(playerList.get(i).getFirstName(), "Simone") && Objects.equals(playerList.get(i).getSecondName(), "Fontecchio"))){
-//                j=j+2;
-//                System.out.println("added 1 " + i + " " + j);
-//                continue;
-//            }
-//            playerList.get(i).setTeam(teamRepository.findByAbbreviation(playerList.get(i).getTeam().getAbbreviation()));
-//            playerList.get(i).setId(listOfIds.get(j));
-//            System.out.println(playerList.get(145).getSecondName() + " " + listOfIds.get(145));
-//
-//             playerRepository.save(playerList.get(i));
-//            System.out.println(i + " " + j);
-//            j++;
-//        }
-//
-//    }
+    public void createPlayers(){
+        String ids= "1629627\n" +
+                "1628391\n" +
+                "1629685\n" +
+                "1626159\n" +
+                "1630216\n" +
+                "1630164\n" +
+                "1626174\n" +
+                "1630218\n" +
+                "1630589\n" +
+                "1626153\n" +
+                "1630593\n" +
+                "1629027\n" +
+                "201152\n" +
+                "1630209\n" +
+                "1627826\n";
+        String[] idArray = ids.split("\n");
+        Player newPlayer = new Player();
+        for (String str : idArray){
+            Optional<Player> player = playerRepository.findById(Long.valueOf(str));
+            newPlayer = player.get();
+            Map<String,String> stats = PlayersUtil.getStats(newPlayer);
+            newPlayer.setPoints(stats.get("points"));
+            newPlayer.setAssists(stats.get("assists"));
+            newPlayer.setRebounds(stats.get("rebounds"));
+        }
+
+
+        playerRepository.save(newPlayer);
+
+
+    }
 
     @GetMapping("/show-all")
     public String getAllPlayers(Model model){
-        model.addAttribute("playersList", playerRepository.findAll());
+
+            List<Player> playersList =  playerRepository.findAll();
+//        List<Player> updatedList = PlayersUtil.getStats(playersList);
+//        for (Player player : updatedList){
+//            System.out.println(player.getId() + " " + player.getSecondName() + " " + player.getPoints());
+//        }
+//        for (Player player : updatedList){
+//            playerRepository.save(player);
+//        }
+        Player randomPlayer =  playersList.get((int) ((Math.random() * playersList.size()) + 0));
+        model.addAttribute("playersList",playersList);
+        model.addAttribute("randomPlayer", randomPlayer);
+        model.addAttribute("newsList", articlesRepository.findAll());
         return "players";
     }
 

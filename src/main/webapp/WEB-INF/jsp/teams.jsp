@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="includes/header.jsp"%>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
     <style>
         table, th, td {
@@ -29,7 +29,8 @@
             text-align: center;
             border-top: 1px solid black;
             margin: 5% auto 25%;
-            margin-bottom: 25% !important;
+            margin-bottom: 15%;
+            height: auto;
         }
     </style>
     <meta charset="UTF-8">
@@ -48,7 +49,7 @@
 </head>
 <body style="background-color: #f3f3f3">
 
-<div style="height: 100%">
+<div >
     <div class="card shadow-sm search_div" >
         <label for='myInput'>Знайти
             <input id='myInput' onkeyup='searchTable()' type='text' style="margin-top: 5%;">
@@ -58,7 +59,6 @@
     <table>
         <tr>
             <td>
-                <p>Western</p>
 
                 <table style="margin-right: auto; margin-left: auto; margin-top:5%; background-color: #FFFFFF ;display:inline-table;
 " id='myTable'>
@@ -93,7 +93,6 @@
         </table>
         </td>
         <td>
-            <p>Eastern</p>
 
             <table style="margin-right: auto; margin-left: auto; margin-top:5%; background-color: #FFFFFF ;display:inline-table;" id='myTable2'>
 
@@ -141,6 +140,45 @@
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
         table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    found = true;
+                }
+            }
+            if (found) {
+                tr[i].style.display = "";
+                found = false;
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+    function searchTable() {
+        let input, filter, found, table, tr, td, i, j;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    found = true;
+                }
+            }
+            if (found) {
+                tr[i].style.display = "";
+                found = false;
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable2");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td");

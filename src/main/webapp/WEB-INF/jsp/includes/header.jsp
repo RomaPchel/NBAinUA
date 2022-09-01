@@ -10,7 +10,6 @@
 
         }
 
-
         /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
         .sticky + .content {
             padding-top: 102px;
@@ -46,19 +45,28 @@
             <div class="logo">
                 <div>
                     <!-- The below line can be an image or a h1, either will work -->
-                    <h1><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"></h1>
+                    <h1><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png" alt="ukr flag"></h1>
+
                 </div>
+                <div style="display: table-cell; vertical-align: middle;">
+
+                    <h1 style="margin-left: 25%"> NBAinUA</h1>
+                </div>
+
             </div>
-            <%--            <h1 class="logo">NBAinUA</h1>--%>
+
+
+
             <nav>
                 <!-- Each of the below lines look complicated. There is a reason for this markup though!
                 <li> tag will be the container for the table.
                 <span> will be the part that centers the content inside it
                 <a> is the actual clickable part -->
+
                 <li><span><a class="button" href="${pageContext.request.contextPath}/">Новини</a></span></li>
                 <li><span><a class="button" href="${pageContext.request.contextPath}/players/show-all">Гравці</a></span></li>
                 <li><span><a class="button" href="${pageContext.request.contextPath}/teams/show-all">Команди</a></span></li>
-                <li><span><a class="button" href="${pageContext.request.contextPath}/">Ігри</a></span></li>
+                <li><span><a class="button" href="${pageContext.request.contextPath}/games">Ігри</a></span></li>
                 <!-- On the line above, remove the class="button" if you don't want the final
                 element to be a button -->
             </nav>

@@ -1,0 +1,55 @@
+.article{
+    margin-top: 5%;
+    width: auto;
+    height: auto;
+    padding: 3%;
+}
+.articlePlayersPage{
+    width: auto;
+    height: auto;
+    padding: 3%;
+
+}
+.articleFooter{
+    width: 100%;
+    text-align: center;
+}
+.imagePlayersPage{
+    width: 150px;
+    height: 150px;
+}
+.articleContent{
+    width: auto;
+    height: 150px;
+    margin: 5%;
+}
+.image{
+    width: auto;
+    height: 150px;
+}
+.articleBody{
+    height: 150px;
+}
+.snippet{
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+    float: left;
+}
+td{
+    width: 50%;
+}
+tr{
+    width: 100%;
+}
+.articleImage{
+    width: 100%;
+}
+.articleTitle{
+    font-weight: bold;
+}
+.date{
+    float: right;;
+}
+.articleHeader{
+    margin: 5%;
+}

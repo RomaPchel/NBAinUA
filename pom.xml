@@ -14,6 +14,8 @@
     <name>NBAinUA</name>
     <description>NBAinUA</description>
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>

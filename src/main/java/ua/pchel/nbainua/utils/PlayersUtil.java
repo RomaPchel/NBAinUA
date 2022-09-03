@@ -62,6 +62,65 @@ public class PlayersUtil {
 //        List<String> list = new ArrayList<>();
 //        return playerList;
 //    }
+    public static List<List<String>> getLastFiveGames(Player player){
+        List<List<String>> listOfGames = new ArrayList<>();
+
+        try {
+            //Parse page
+            StringBuilder result = new StringBuilder();
+            String URL = "https://www.nba.com/stats/player/" + player.getId();
+            System.out.println(URL);
+            URL url = new URL(URL);
+            // Read all the text returned by the server
+            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+            String str;
+            while ((str = in.readLine()) != null) {
+                // str is one line of text; readLine() strips the newline character(s)
+                result.append(str);
+            }
+            in.close();
+            String res = String.valueOf(result);
+            //Extract stats div
+            String[] statsAllPage = res.split("\"SEASON_ID\"");
+            //Extract stats and filter them
+
+            for (String game : statsAllPage){
+                if (game.contains("<!DOCTYPE") )
+                    continue;
+                if (game.contains("awards"))
+                    game = game.substring(0, game.indexOf("\"awards\""));
+                System.out.println(game);
+                String[] statsArr = game.split("\":");
+                List<String> statsList = new ArrayList<>();
+                for (int i = 4; i < statsArr.length-2; i+=1 ){
+
+
+                    statsList.add(statsArr[i].substring(0, statsArr[i].indexOf(",")));
+
+                }
+                System.out.println(Arrays.toString(statsArr));
+
+                double percentage1 = Double.parseDouble(statsList.get(5));
+                percentage1*=100;
+
+                statsList.set(5,String.valueOf(percentage1).length() > 3 ? String.valueOf(percentage1).substring(0,4) : String.valueOf(percentage1));
+                double percentage2 = Double.parseDouble(statsList.get(8));
+                percentage2*=100;
+                statsList.set(8,String.valueOf(percentage2).length() > 3 ? String.valueOf(percentage2).substring(0,4) : String.valueOf(percentage2));
+                double percentage3 = Double.parseDouble(statsList.get(11));
+                percentage3*=100;
+                statsList.set(11,String.valueOf(percentage3).length() > 3 ? String.valueOf(percentage3).substring(0,4) : String.valueOf(percentage3));
+                listOfGames.add(statsList);
+            }
+            System.out.println(listOfGames);
+        } catch (IOException ignored) {
+        }
+        return listOfGames;
+
+    }
+
+
+
     public static Map<String, String> getStats(Player player){
         //Access the page
         Map<String, String> stats = new HashMap<>();
@@ -70,7 +129,7 @@ public class PlayersUtil {
             //Parse page
                 StringBuilder result = new StringBuilder();
                 System.out.println(player.getId());
-                String URL = "https://www.nba.com/player/" + player.getId();
+                String URL = "https://www.nba.com/stats/player/" + player.getId();
                 System.out.println(URL);
                 URL url = new URL(URL);
                 // Read all the text returned by the server
@@ -162,7 +221,5 @@ public class PlayersUtil {
         return listOfIds;
     }
 
-//    public static void main(String[] args) {
-//        getStats();
-//    }
+
 }

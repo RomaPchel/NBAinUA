@@ -48,10 +48,10 @@ public class PlayersController {
         for (String str : idArray){
             Optional<Player> player = playerRepository.findById(Long.valueOf(str));
             newPlayer = player.get();
-            Map<String,String> stats = PlayersUtil.getStats(newPlayer);
-            newPlayer.setPoints(stats.get("points"));
-            newPlayer.setAssists(stats.get("assists"));
-            newPlayer.setRebounds(stats.get("rebounds"));
+//            Map<String,String> stats = PlayersUtil.getStats(newPlayer);
+//            newPlayer.setPoints(stats.get("points"));
+//            newPlayer.setAssists(stats.get("assists"));
+//            newPlayer.setRebounds(stats.get("rebounds"));
         }
 
 
@@ -82,6 +82,7 @@ public class PlayersController {
     public String getPlayer(@PathVariable String id, Model model){
         Optional<Player> player = playerRepository.findById(Long.valueOf(id));
         model.addAttribute("player", player.get());
+        model.addAttribute("lastFive", PlayersUtil.getLastFiveGames(player.get()));
         return "player";
     }
 }

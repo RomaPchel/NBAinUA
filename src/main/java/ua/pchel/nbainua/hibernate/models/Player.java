@@ -24,6 +24,7 @@ public class Player {
     private String assists;
     private String rebounds;
 
+
     public Player(String firstName, String secondName, Team team, String number, String position, String height, String weight, String fromOrAttended, String points, String assists, String rebounds) {
         this.firstName = firstName;
         this.secondName = secondName;

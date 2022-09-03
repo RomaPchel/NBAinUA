@@ -4,7 +4,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
-
+    <style>
+        table, th, td {
+            border-top: 1px solid black;
+            text-align: center;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css"
           href="<%=application.getContextPath() %>/static/css/includes.css" >
@@ -96,8 +105,88 @@
                         </table>
                     </div>
                 </div>
+
             </div>
         </div>
+        <div class="row">
+            <div class="card shadow-sm col-12" >
+
+                <div style="overflow: auto;
+            overflow-x: hidden; margin: 5%">
+
+                    <table style="margin: 5% auto;border-top: 1px  solid black; background-color: #FFFFFF;  position: relative;
+;  border-collapse: collapse;
+" id='myTable' class="sortable;">
+
+                        <div class="table-header" style="margin-right: 50%;position: sticky; top: 0;">
+
+                            <tr style="top: 0; /* Don't forget this, required for the stickiness */">
+                                <th>Гра</th>
+                                <th>Результат</th>
+                                <th>Хвилин</th>
+                                <th>PTS</th>
+                                <th>FGM</th>
+                                <th>FGA</th>
+                                <th>FG%</th>
+                                <th>3PM</th>
+                                <th>3PA</th>
+                                <th>3P%</th>
+                                <th>FTM</th>
+                                <th>FTA</th>
+                                <th>FT%</th>
+                                <th>OREB</th>
+                                <th>DREB</th>
+                                <th>REB</th>
+                                <th>AST</th>
+                                <th>STL</th>
+                                <th>BLK</th>
+                                <th>TOV</th>
+                                <th>PF</th>
+                                <th>+/-</th>
+
+                            </tr>
+                        </div>
+                        <div class="table-tabs" style="margin-right: auto; margin-left: auto; ">
+                            <div style="margin: auto; ">
+                                <c:forEach items="${lastFive}" var="game">
+
+                                    <tr>
+
+                                        <td style="height:80px;width:80px">${game.get(0)}</td>
+                                        <td style="height:80px;width:80px">${game.get(1).substring(1,2)}</td>
+                                        <td style="height:80px;width:80px">${game.get(2)}</td>
+                                        <td style="height:80px;width:80px">${game.get(20)}</td>
+                                        <td style="height:80px;width:80px">${game.get(3)}</td>
+                                        <td style="height:80px;width:80px">${game.get(4)}</td>
+                                        <td style="height:80px;width:80px">${game.get(5)}</td>
+                                        <td style="height:80px;width:80px">${game.get(6)}</td>
+                                        <td style="height:80px;width:80px">${game.get(7)}</td>
+                                        <td style="height:80px;width:80px">${game.get(8)}</td>
+                                        <td style="height:80px;width:80px">${game.get(9)}</td>
+                                        <td style="height:80px;width:80px">${game.get(10)}</td>
+                                        <td style="height:80px;width:80px">${game.get(11)}</td>
+                                        <td style="height:80px;width:80px">${game.get(12)}</td>
+                                        <td style="height:80px;width:80px">${game.get(13)}</td>
+                                        <td style="height:80px;width:80px">${game.get(14)}</td>
+                                        <td style="height:80px;width:80px">${game.get(15)}</td>
+                                        <td style="height:80px;width:80px">${game.get(16)}</td>
+                                        <td style="height:80px;width:80px">${game.get(17)}</td>
+                                        <td style="height:80px;width:80px">${game.get(18)}</td>
+                                        <td style="height:80px;width:80px">${game.get(19)}</td>
+                                        <td style="height:80px;width:80px">${game.get(21)}</td>
+
+                                    </tr>
+
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+
     </div>
 </div>
 

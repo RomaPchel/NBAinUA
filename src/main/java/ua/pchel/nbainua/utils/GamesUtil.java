@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GamesUtil {
@@ -29,7 +31,7 @@ public class GamesUtil {
 
             String body = String.valueOf(result);
             String[] container = body.split("class=\"shadow-block bg-white flex md:rounded text-sm relative mb-4\"");
-            List<String> list = new java.util.ArrayList<>(List.of(container));
+            List<String> list = new ArrayList(Arrays.asList(container));
            return list;
 
         }

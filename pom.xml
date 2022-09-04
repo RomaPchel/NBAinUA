@@ -111,7 +111,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>NbAinUaApplication.java</mainClass>
+                            <mainClass>ua.pchel.nbainua.NbAinUaApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

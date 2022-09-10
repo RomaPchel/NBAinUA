@@ -1,7 +1,5 @@
 .game_div{
-    border:1px solid black;
     width: 450px;
-    height: 180px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -36,90 +34,37 @@
 .team_name{
     font-size: 18px;
 }
-.date-picker {
-    position: relative;
-    width: 100%;
-    max-width: 320px;
-    height: 60px;
-    background-color: #FFF;
-    margin: 30px auto;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 
-    cursor: pointer;
-    user-select: none;
+.createRow{
+    margin-top: 5% !important;
 }
-
-.date-picker:hover {
-    background-color: #F3F3F3;
+.contentRow{
+    width: 400px;
 }
-
-.date-picker .selected-date {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: #313131;
-    font-size: 28px;
-}
-
-.date-picker .dates {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-
-    background-color: #FFF;
-}
-
-.date-picker .dates.active {
-    display: block;
-}
-
-.date-picker .dates .month {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #EEE;
-}
-
-.date-picker .dates .month .arrows {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #313131;
-    font-size: 20px;
-}
-
-.date-picker .dates .month .arrows:hover {
-    background-color: #F3F3F3;
-}
-
-.date-picker .dates .month .arrows:active {
-    background-color: #00CA85;
-}
-
-.date-picker .dates .days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    height: 200px;
-}
-.date-picker .dates .days .day {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #313131;
-}
-.date-picker .dates .days .day.selected {
-    background-color: #00CA85;
-}
-
 .search_div{
     width: 450px;  margin-left: auto; margin-right: auto; text-align: center; height: 100px;
     line-height: 100px; margin-bottom: 10%
+}
+[type="date"] {
+    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+/* custom styles */
+
+label {
+    display: block;
+}
+input {
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 3px 5px;
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+    width: 190px;
 }

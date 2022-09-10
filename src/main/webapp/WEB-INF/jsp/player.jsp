@@ -108,9 +108,11 @@
 
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 5%">
             <div class="card shadow-sm col-12" >
-
+                <div class="card-header bg-transparent border-0">
+                    <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Останні 5 ігор</h3>
+                </div>
                 <div style="overflow: auto;
             overflow-x: hidden; margin: 5%">
 

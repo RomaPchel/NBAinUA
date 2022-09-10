@@ -18,11 +18,11 @@ public class Game {
     private String winner;
     private String firstTeamScore;
     private String secondTeamScore;
-    private Date date;
+    private String date;
     private boolean hasEnded;
 
 
-    public Game(Team firstTeam, Team secondTeam, String time, String location, String winner, String firstTeamScore, String secondTeamScore, Date date, boolean hasEnded) {
+    public Game(Team firstTeam, Team secondTeam, String time, String location, String winner, String firstTeamScore, String secondTeamScore, String date, boolean hasEnded) {
         this.firstTeam = firstTeam;
         this.secondTeam = secondTeam;
         this.time = time;
@@ -47,11 +47,11 @@ public class Game {
 
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

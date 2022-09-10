@@ -12,12 +12,12 @@ public class GamesUtil {
 
 
 
-    public static List<String> parseGamePage() {
+    public static List<String> parseGamePage(String date) {
             StringBuilder result = new StringBuilder();
             //Access the page
             try {
                 // Create a URL for the desired page
-                URL url = new URL("https://www.nba.com/games?date=2022-10-21");
+                URL url = new URL("https://www.nba.com/games?date=" + date);
                 // Read all the text returned by the server
                 BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
                 String str;
@@ -49,6 +49,11 @@ public class GamesUtil {
     public static String getTime(String main){
         String[] arrForTime = main.split("class=\"h9 text-xs uppercase\">");
         return arrForTime[1].substring(0, arrForTime[1].indexOf("<"));
+    }
+
+    public static String getId(String main){
+        String[] arrForTime = main.split("href=\"/game/\"");
+        return arrForTime[1].substring(11, arrForTime[1].length()-1);
     }
 
 }

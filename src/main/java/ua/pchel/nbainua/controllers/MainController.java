@@ -12,6 +12,7 @@ import ua.pchel.nbainua.hibernate.repos.GamesRepository;
 import ua.pchel.nbainua.hibernate.services.TeamService;
 import ua.pchel.nbainua.utils.GamesUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -25,7 +26,9 @@ public class MainController {
     private GamesRepository gamesRepository;
 
     public List<Game> getListOfGames() {
-        List<String> list = GamesUtil.parseGamePage();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String formatted = df.format(new Date());
+        List<String> list = GamesUtil.parseGamePage(formatted);
 
         List<Game> gameList = new ArrayList<>();
 
@@ -42,6 +45,7 @@ public class MainController {
     public String home(Model model){
         List<Game> gamesList = gamesRepository.findAll();
         List<Article> list = articlesRepository.findAll();
+        Collections.reverse(list);
         int size = list.size();
         System.out.println(gamesList);
        // gamesRepository.saveAll(gamesList);
@@ -63,17 +67,7 @@ public class MainController {
         return "home";
     }
 
-    @GetMapping("/games")
-    public String games(Model model){
-        List<Game> gamesList = gamesRepository.findAll();
-        for (Game game : getListOfGames())
-            System.out.println(game.getDate());
-        if (getListOfGames().size() == 0)
-            model.addAttribute("noGamesMessage", "На цей день ігор не заплановано");
-        model.addAttribute("gamesList", gamesList);
 
-        return "games";
-    }
     @GetMapping("/player")
     public String player(){
         return "player";

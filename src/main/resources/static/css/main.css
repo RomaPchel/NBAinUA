@@ -4,6 +4,7 @@
     margin-left: auto;
     margin-right: auto;
     border-radius: 15px;
+    border: 1px solid black;
 }
 
 .info_for_game{

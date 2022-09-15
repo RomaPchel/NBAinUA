@@ -28,15 +28,20 @@ public class MainController {
     public List<Game> getListOfGames() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String formatted = df.format(new Date());
-        List<String> list = GamesUtil.parseGamePage(formatted);
-
         List<Game> gameList = new ArrayList<>();
 
-        list.remove(0);
+        for (int i =0; i < 5; i++) {
+            List<String> list = GamesUtil.parseGamePage(formatted.substring(0,formatted.length()-2) + i);
+            System.out.println(formatted.substring(0,formatted.length()-2) + i);
 
-        for (String str : list) {
-            String[] teams = GamesUtil.getTeamsNames(str).split("/");
-            gameList.add(new Game(teamService.findByName(teams[0]), teamService.findByName(teams[1]), GamesUtil.getTime(str), "location", null,null,null,null, false));
+            list.remove(0);
+
+            for (String str : list) {
+                String[] teams = GamesUtil.getTeamsNames(str).split("/");
+                String id = GamesUtil.getId(str).substring(77, 87);
+                System.out.println("ID " + id);
+                gameList.add(new Game(Long.valueOf(id), teamService.findByName(teams[0]), teamService.findByName(teams[1]), GamesUtil.getTime(str), "location", null, null, null, null, false));
+            }
         }
         return gameList;
     }

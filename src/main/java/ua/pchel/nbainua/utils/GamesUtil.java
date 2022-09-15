@@ -53,7 +53,7 @@ public class GamesUtil {
 
     public static String getId(String main){
         String[] arrForTime = main.split("href=\"/game/\"");
-        return arrForTime[1].substring(11, arrForTime[1].length()-1);
+        return arrForTime[0].substring(11, arrForTime[0].length()-1);
     }
 
 }

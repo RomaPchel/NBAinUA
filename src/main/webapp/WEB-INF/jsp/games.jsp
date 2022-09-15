@@ -54,7 +54,7 @@
     <form onchange="this.form.submit()" action="${pageContext.request.contextPath}/games">
         <label for="date">Виберіть день</label>
         <input type="date" name="date" id="date">
-        <input type="submit">
+        <input type="submit" placeholder="Пошук">
     </form>
 
         <c:forEach var="game" items="${gamesList}">
@@ -62,7 +62,7 @@
 
 
 
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" style="text-decoration: none; color:black ">
+                <a href="/games/${game.getId()}" style="text-decoration: none; color:black ">
                     <div class="row container">
                         <div class="col-4 ">
                             <div class="row d-flex justify-content-center">

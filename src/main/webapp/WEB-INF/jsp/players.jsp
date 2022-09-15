@@ -65,6 +65,10 @@
 <div class="row">
 <div class="col-lg-8" >
 <div class="card shadow-sm random_player" >
+    <div class="row flex-d align-items-center">
+        <h4 style="margin-right: 30%">Рандомний гравець</h4>
+
+    </div>
     <div class="row">
 
         <div class="col-lg-6">

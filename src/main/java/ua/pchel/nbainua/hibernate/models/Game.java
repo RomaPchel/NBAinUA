@@ -7,7 +7,6 @@ import java.util.Date;
 public class Game {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
     private Team firstTeam;
@@ -22,7 +21,8 @@ public class Game {
     private boolean hasEnded;
 
 
-    public Game(Team firstTeam, Team secondTeam, String time, String location, String winner, String firstTeamScore, String secondTeamScore, String date, boolean hasEnded) {
+    public Game(Long id, Team firstTeam, Team secondTeam, String time, String location, String winner, String firstTeamScore, String secondTeamScore, String date, boolean hasEnded) {
+        this.id = id;
         this.firstTeam = firstTeam;
         this.secondTeam = secondTeam;
         this.time = time;
@@ -34,6 +34,8 @@ public class Game {
 
         this.hasEnded = hasEnded;
     }
+
+
 
     public boolean isHasEnded() {
         return hasEnded;

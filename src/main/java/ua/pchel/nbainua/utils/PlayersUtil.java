@@ -203,23 +203,6 @@ public class PlayersUtil {
         return idList;
     }
 
-    public static List<Long> getPlayerId() throws FileNotFoundException, ParseException {
-        JSONParser parser = new JSONParser();
-
-        JSONArray a = (JSONArray) parser.parse(new FileReader("D:\\NBAinUA\\src\\main\\resources\\static\\players.json"));
-        Integer id = 0;
-        List<Long> listOfIds = new ArrayList<>();
-        for (Object o : a)
-        {
-            JSONObject person = (JSONObject) o;
-            System.out.println("i am gere");
-            id = (Integer) person.get("playerId");
-            System.out.println(id);
-            listOfIds.add(Long.valueOf(id));
-
-        }
-        return listOfIds;
-    }
 
 
 }

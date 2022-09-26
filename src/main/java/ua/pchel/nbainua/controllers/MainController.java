@@ -30,30 +30,31 @@ public class MainController {
         String formatted = df.format(new Date());
         List<Game> gameList = new ArrayList<>();
 
-        for (int i =0; i < 5; i++) {
-            List<String> list = GamesUtil.parseGamePage(formatted.substring(0,formatted.length()-2) + i);
-            System.out.println(formatted.substring(0,formatted.length()-2) + i);
 
-            list.remove(0);
+        // for (int i = 5; i < 9; i++) {
+        List<String> list = GamesUtil.parseGamePage(formatted);
+        System.out.println(formatted);
 
-            for (String str : list) {
-                String[] teams = GamesUtil.getTeamsNames(str).split("/");
-                String id = GamesUtil.getId(str).substring(77, 87);
-                System.out.println("ID " + id);
-                gameList.add(new Game(Long.valueOf(id), teamService.findByName(teams[0]), teamService.findByName(teams[1]), GamesUtil.getTime(str), "location", null, null, null, null, false));
-            }
+        list.remove(0);
+
+        for (String str : list) {
+            String[] teams = GamesUtil.getTeamsNames(str).split("/");
+            String id = GamesUtil.getId(str).substring(77,87);
+            gameList.add(new Game(Long.valueOf(id),teamService.findByName(teams[0]), teamService.findByName(teams[1]), GamesUtil.getTime(str), "location", null, null, null, formatted, false));
+            // }
+            //gamesRepository.saveAll(gameList);
         }
         return gameList;
     }
 
     @GetMapping("/")
     public String home(Model model){
-        List<Game> gamesList = gamesRepository.findAll();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String formatted = df.format(new Date());
+        List<Game> gamesList = gamesRepository.findByDate(formatted);
         List<Article> list = articlesRepository.findAll();
         Collections.reverse(list);
         int size = list.size();
-        System.out.println(gamesList);
-       // gamesRepository.saveAll(gamesList);
         if (getListOfGames().size() == 0)
             model.addAttribute("noGamesMessage", "На цей день ігор не заплановано");
 
@@ -61,12 +62,11 @@ public class MainController {
                 = list.subList(0, (int) Math.ceil((double) (size + 1) / 2));
         List<Article> second =
                 list.subList((int) Math.ceil((double) ((size)+1) / 2), size);
-        System.out.println(first);
-        System.out.println(second);
+
         model.addAttribute("firstNewsList",first);
         model.addAttribute("secondNewsList", second);
-
-        model.addAttribute("gamesList", gamesRepository.findAll());
+        System.out.println(gamesList);
+        model.addAttribute("gamesList", gamesList);
 
 
         return "home";

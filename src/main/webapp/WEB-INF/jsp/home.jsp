@@ -128,7 +128,7 @@
     <div class="col-lg-4">
         <div class="card shadow-sm news_div" style="margin-top: 10%; margin-bottom: 10%" id="news_div">
 
-
+            <p>${noGamesMessage}</p>
             <c:forEach var="game" items="${gamesList}">
             <table class="table table-bordered">
                 <tr>

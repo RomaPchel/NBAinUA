@@ -22,8 +22,10 @@ public class Article {
     @Enumerated(EnumType.STRING)
     private Set<Tags> tags;
     private String mainImage;
+    private boolean hasVideo;
+    private String videoLink;
 
-    public Article(String date, String title, String snippet, String content, String image, String author, Set<Tags> tags, String mainImage) {
+    public Article(String date, String title, String snippet, String content, String image, String author, Set<Tags> tags, String mainImage, boolean hasVideo, String videoLink) {
         this.date = date;
         this.title = title;
         this.snippet = snippet;
@@ -32,6 +34,24 @@ public class Article {
         this.author = author;
         this.tags = tags;
         this.mainImage = mainImage;
+        this.hasVideo = hasVideo;
+        this.videoLink = videoLink;
+    }
+
+    public String getVideoLink() {
+        return videoLink;
+    }
+
+    public void setVideoLink(String videoLink) {
+        this.videoLink = videoLink;
+    }
+
+    public boolean isHasVideo() {
+        return hasVideo;
+    }
+
+    public void setHasVideo(boolean hasVideo) {
+        this.hasVideo = hasVideo;
     }
 
     public Article() {

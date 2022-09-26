@@ -55,6 +55,11 @@
         </div>
         <div style="margin:5% auto 5%; width: 70%">
             <p style="text-align: left; font-size: 24px;line-height: 2;">  ${article.content}</p>
+            <c:if test="${article.hasVideo}">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/${article.videoLink}" frameborder="0" allowfullscreen ></iframe>
+
+            </c:if>
+
         </div>
     </div>
 </div>

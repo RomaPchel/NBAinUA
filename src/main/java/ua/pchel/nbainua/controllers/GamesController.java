@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.pchel.nbainua.hibernate.models.Game;
-import ua.pchel.nbainua.hibernate.models.Player;
 import ua.pchel.nbainua.hibernate.repos.GamesRepository;
 import ua.pchel.nbainua.hibernate.services.GameService;
 import ua.pchel.nbainua.hibernate.services.TeamService;
 import ua.pchel.nbainua.utils.GamesUtil;
-import ua.pchel.nbainua.utils.PlayersUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
@@ -62,7 +60,7 @@ public class GamesController {
         List<Game> gamesList = gameService.findByDate(date);
         System.out.println(gamesList);
         if (getListOfGames(date).size() == 0)
-            model.addAttribute("noGamesMessage", "На цей день ігор не заплановано");
+            model.addAttribute("noGamesMessage", "");
         model.addAttribute("gamesList", gamesList);
 
         return "games";
